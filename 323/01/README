@@ -1,0 +1,37 @@
+/*
+ * Autor: Bruno Ferrero  
+ * n.USP: 3690142  Curso: BCC
+ *
+ * Data: 04/04/2010
+ * gcc version 4.3.2 (Debian 4.3.2-1.1)
+ *
+ * LEIAME
+ */
+
+ARQUIVOS:
+ep1/STACK.h
+ep1/STACK.c
+ep1/CRUEL.c
+ep1/LEIAME
+
+
+$ uname -a
+Linux debian 2.6.26-2-686 #1 SMP Tue Mar 9 17:35:51 UTC 2010 i686 GNU/Linux
+
+Compilado com:
+$ gcc -c -Wall -pedantic -ansi STACK.c -o STACK.o
+$ gcc -c -Wall -pedantic -ansi CRUEL.c -o CRUEL.o
+$ gcc CRUEL.o STACK.o -o cruel
+
+
+ESTRATÉGIA ADOTADA:
+- Prioridade 1: mover cartas para a pilha de naipes;
+- Prioridade 2: movimentar a maior carta possível entre as pilhas de cartas; após essa movimentação
+tenta novamente mover alguma carta para a pilha de naipes;
+- Quando não houver mais movimentações faz a redistribuição das cartas.
+
+
+OBS.
+A cada partida jogada o programa pergunta se quer jogar uma nova partida. Para parar de jogar é só digitar 0 .
+
+
