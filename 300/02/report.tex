@@ -1,0 +1,58 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}  
+\usepackage[brazil]{babel}
+
+\usepackage[margin=2.5cm]{geometry}  
+\linespread{1.5}
+\usepackage{amssymb}
+\usepackage{palatino,euler}   
+
+\title{MAC 300: EP2 - Métodos iterativos para sistemas lineares: Gradientes Conjugados} 
+\author{Bruno Ferrero}
+\date{NUSP: 3690142}
+
+\begin{document}
+
+\maketitle
+
+\section*{Lecture 32: Métodos Iterativos}
+
+\begin{itemize}
+\item Os métodos diretos (não iteratvos) são caros. Em geral, custam $O(n^3)$;
+\item No caso de matrizes com n grande esses métodos passam a ser inviáveis. No entanto, em grande parte das aplicações reais, matrizes com n grande costumam ser constituídas de muitas entradas nulas. Tais matrizes são denominadas esparsas. No caso de uma matriz $A (n x n)$, $v$ será o número de entradas não nulas de $A$ e $v <<< n^2$;
+\item A ideia por trás dos métodos iterativos é explorar a estrutura esparsa de matrizes grandes para reduzir o custo computacional na resolução de sistemas lineares;   
+\item Em geral, utilizando um método direto, a multiplicação de uma matriz $A (n x n)$ por um vetor $x$, $Ax$ custa $O(n^2)$. No caso de um método iterativo, essa multiplicação custa $O(vn)$, em que $v$ é o número de entradas não nulas da matriz $A$.
+\item Os métodos iterativos, a cada iteração, calcula uma solução aproximada para o produto $Ax$ (custo $O(vn$)). A objetivo é que após $k$ iterações a solução convirja para a solução "real do sistema" - custo computacional $O(kvn)$. Em uma análise de pior caso estes métodos ainda são de ordem $O(n^3)$;
+\item Dentre os métodos iterativos, este EP tratará do \textit{Método do Gradientes Conjugados} (\textbf{CG}). Neste método necessita-se que a matriz $A$ seja \textbf{positiva definida} e Hermitiana (No livro do \textit{Trefethen}, ele desenvolve a teoria para matrizes pertencentes ao conjunto dos Complexos ($\mathbb{C}$), neste EP vou assumir apenas matrizes pertencentes ao conjunto $\mathbb{R}$, e portanto, o método CG será implementado apenas considerando \textbf{matrizes simétricas}; também vou assumir que as matrizes em questão são todas quadradas);
+\item A velocidade de convergência de cada método iterativo muitas vezes está relacionada à estrutura da matriz $A$; Em casos ideais pode-se resolver o problema linear em $O(n)$; 
+\item Vale ressaltar que os Métodos Iterativos não produz a solução exata do problema, mas sim uma solução aproximada (a solução aproximada não é devido aos erros de arredondamento), que converge a para a solução real. 
+\end{itemize}
+
+\section*{Lecture 38: Gradientes Conjugados (CG)}
+
+O problema a ser resolvido é:
+
+$$Ax = b, \quad A \in \mathbb{R}^{(nxn)}, \quad x, b \in  \mathbb{R}^{(n)}, \quad x^TAx > 0  $$
+
+\begin{itemize}
+\item A paritr de uma primeira solução qualquer $x_{*}$ o método CG visa minimizar o erro (diferença) entre a solução real ($x$) e a solução calculada naquela iteração ($x_k$);
+
+\item Em cada iteração é calculado um direção ($p_k$) e um tamanho de passo ($\beta_k$) para busca essa nova solução;
+
+\item Direções conjugadas: o critério para definir uma nova direção é que os vetores de erro (resíduo) entre a solução na iteração $k$ ($r_k$) e a solução na iteração anterior ($r_{k-1}$) sejam ortogonais ($r{_k}^{T}r_{k-1} = 0$) e que a nova direção $p_k$ seja $\,p{_k}^{T}Ap_{k-1} = 0$. Tais direções são denominadas $A$ cojugadas;
+
+\item O resíduo $r_k$ é: $r_k = b - Ax_k$. Se tomarmos a função: $$\varphi(x) = \frac{1}{2} x^tAx - x^Tb$$ e calcularmos seu gradiente $\nabla\varphi(x)$: $$ - \nabla\varphi = b - Ax$$
+Achar um $x_k$, tal que $\varphi(x_k)$ seja mínimo, implica em $\nabla\varphi = 0$. E esse é o problema que estamos resolvendo com método dos Gradientes Conjugados. Ao escolher a direção de busca para nova solução para a iteração $k$, tomamos o gradiente de $\varphi$;
+
+\item Em geral, no caso de matrizes bem condicionadas o método converge rapidamente, em menos de $n$ iterações.
+ 
+\end{itemize}
+
+%\section*{Implementação}
+%\begin{itemize}
+%\item[\$] \texttt{gcc ep2.c - o cg.out}
+%\end{itemize}
+
+
+\end{document}
