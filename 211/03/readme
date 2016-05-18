@@ -1,0 +1,60 @@
+/*********************************************************************
+ *  Curso: BCC                                 Disciplina: MAC 211
+ *  Data : 2/6/2010                       Exercic. Projeto(parte 2)
+ *  Compilador utilizado : gcc versao 4.1.2
+ *  ******************************************************************/
+
+Instrucoes de compilação:
+
+Para gerar o executavel do jogo digite:
+
+make jogo
+
+e depois para ver a simulacao
+
+./jogo [par1] [par2] [par3]
+
+O comando aceita nenhum, 1, 2, ou 3 parametros de entrada, sao eles:
+par1 = frequencia de criacao de naufragos
+par2 = vel media dos naufragos criados
+par3 = semente para o random
+
+A configuracao default do jogo
+
+par1 = 0.5
+par2 = 1
+par3 = time(NULL)
+
+-------------------------------------------------------------------------
+
+Algumas decisões particulares da implementacao da segunda fase do projeto.
+
+Simbolos default
+circulo amarelo                       - navio naufragado Asimov
+circulos vermelhos                    - naufragos
+circulos verdes (diferentes tamanhos) - corais
+triangulos isoceles                   - botes
+
+
+- O sistema foi dividido em cinco modulos: oceano, fisica, item, grafico e colisao.
+  O modulo oceano (.c e .h) cuida de toda a parte de gerenciamento do oceano
+     e das frequencias de criacao de naufragos, tambem cuida da velocidade
+      media deles.
+  O modulo fisica cuida da parte de movimentacao dos naufragos e sorteios 
+    de direcao.
+  O modulo item contem as implementacoes e estrutura de dados dos itens 
+    (naufragos) presentes do jogo.
+  O modulo grafico cuida dos desenhos na tela.
+  O modulo colisao, foi feito separado do modulo fisica e cuidada sozinho de todas
+as colisoes que acontecem no jogo.
+
+- Os naufragos tem velocidade minima zero (ficam parados) e maxima 4 em cada eixo.
+  Tomar cuidado com as modificacoes nos limites de velocidade pois eles podem, gerar
+  problemas no tratamento das colisoes. O ideal é limitar a velocidade dos naufragos,
+  a um deslocamento de no maximo o tamanho do seu raio.
+
+- A policica de deteccao e tratamento de colisao, é baseada na ideia de que devemos
+  começar resolvendo as colisoes mais proximas primeiro (colisão prioritaria). Uma 
+  vez que essa colisao foi resolvida, devemos atualizar a estrutura de dados que 
+  gerencia os elementos que colidem e buscar a nova colisao mais proxima dentre todos
+  os elementos. Aparentemente esta funcionando sem problemas.

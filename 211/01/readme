@@ -1,0 +1,22 @@
+EP1 - Linguagem de montagem
+
+Alunos:
+
+Para compilar
+
+nasm -f elf funcao.asm
+gcc -ansi -pedantic -Wall -c main.c
+gcc -ansi -pedantic -Wall -g -o prog main.o funcao.o
+
+Testes
+Foram geradas 4 entradas (com gera_numeros.c) e cada uma delas rodada por 10 vezes pelo programa (funcao.asm) e pelo programa escrito em lingaugem c (primo.c).
+Eis abaixo os tempos de execução.
+
+Tamanho da entrada  |  Ordem de grandeza  |  Num. de primos encontrados  |  Média e desvio padrao do tempo de 10 execucoes
+                                                                             funcao.asm           |    primo.c (gcc) 
+
+100000                 10                    44200                           5.8034 +- 0.3803 s        0.0425 +- 0.0128 s
+100000                 100                   25394                           7.1790 +- 0.2393 s        0.0611 +- 0.0063 s
+100000                 1000                  16829                           9.2382 +- 0.4875 s        0.0735 +- 0.0086 s
+100000                 10000                 122262                         11.3232 +- 0.3738 s        0.1203 +- 0.0206 s
+

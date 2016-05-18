@@ -1,0 +1,8 @@
+-Os conectivos utilizados sao os descritos no enunciado do ep, a saber: .A. .O. .N. .I.
+-Assumimos as seguintes regras para a entrada dos sequentes:
+	1) Nao exitem espaços em branco nos sequentes e nem entre eles;
+	2) Todas as estruturas estao parentetizadas, exceto atomos em estruturas maiores (ex: (p.A.q) );
+	3) Atomos sozinhos estao parentetizados;
+	4) Atomos sao represetados com apenas um caracter minusculo (a-z)
+	5) As premissas se encontram na primeira linha do arquivo texto;
+	6) A consequencia logica se encontra na segunda linha do arquivo texto
