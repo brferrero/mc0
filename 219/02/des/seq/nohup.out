@@ -1,0 +1,75 @@
+gcc -o des -std=c99 des_test.c des.c des.h
+des_test.c: In function ‘des_test’:
+des_test.c:48:22: warning: passing argument 3 of ‘des_crypt’ from incompatible pointer type
+  des_crypt(pt1, buf, schedule);
+                      ^
+In file included from des_test.c:21:0:
+des.h:32:6: note: expected ‘const BYTE (*)[6]’ but argument is of type ‘BYTE (*)[6]’
+ void des_crypt(const BYTE in[], BYTE out[], const BYTE key[][6]);
+      ^
+des_test.c:52:22: warning: passing argument 3 of ‘des_crypt’ from incompatible pointer type
+  des_crypt(ct1, buf, schedule);
+                      ^
+In file included from des_test.c:21:0:
+des.h:32:6: note: expected ‘const BYTE (*)[6]’ but argument is of type ‘BYTE (*)[6]’
+ void des_crypt(const BYTE in[], BYTE out[], const BYTE key[][6]);
+      ^
+des_test.c:56:22: warning: passing argument 3 of ‘des_crypt’ from incompatible pointer type
+  des_crypt(pt2, buf, schedule);
+                      ^
+In file included from des_test.c:21:0:
+des.h:32:6: note: expected ‘const BYTE (*)[6]’ but argument is of type ‘BYTE (*)[6]’
+ void des_crypt(const BYTE in[], BYTE out[], const BYTE key[][6]);
+      ^
+des_test.c:60:22: warning: passing argument 3 of ‘des_crypt’ from incompatible pointer type
+  des_crypt(ct2, buf, schedule);
+                      ^
+In file included from des_test.c:21:0:
+des.h:32:6: note: expected ‘const BYTE (*)[6]’ but argument is of type ‘BYTE (*)[6]’
+ void des_crypt(const BYTE in[], BYTE out[], const BYTE key[][6]);
+      ^
+des_test.c:64:28: warning: passing argument 3 of ‘three_des_crypt’ from incompatible pointer type
+  three_des_crypt(pt1, buf, three_schedule);
+                            ^
+In file included from des_test.c:21:0:
+des.h:35:6: note: expected ‘const BYTE (*)[16][6]’ but argument is of type ‘BYTE (*)[16][6]’
+ void three_des_crypt(const BYTE in[], BYTE out[], const BYTE key[][16][6]);
+      ^
+des_test.c:68:28: warning: passing argument 3 of ‘three_des_crypt’ from incompatible pointer type
+  three_des_crypt(ct3, buf, three_schedule);
+                            ^
+In file included from des_test.c:21:0:
+des.h:35:6: note: expected ‘const BYTE (*)[16][6]’ but argument is of type ‘BYTE (*)[16][6]’
+ void three_des_crypt(const BYTE in[], BYTE out[], const BYTE key[][16][6]);
+      ^
+des_test.c:72:28: warning: passing argument 3 of ‘three_des_crypt’ from incompatible pointer type
+  three_des_crypt(pt3, buf, three_schedule);
+                            ^
+In file included from des_test.c:21:0:
+des.h:35:6: note: expected ‘const BYTE (*)[16][6]’ but argument is of type ‘BYTE (*)[16][6]’
+ void three_des_crypt(const BYTE in[], BYTE out[], const BYTE key[][16][6]);
+      ^
+des_test.c:76:28: warning: passing argument 3 of ‘three_des_crypt’ from incompatible pointer type
+  three_des_crypt(ct4, buf, three_schedule);
+                            ^
+In file included from des_test.c:21:0:
+des.h:35:6: note: expected ‘const BYTE (*)[16][6]’ but argument is of type ‘BYTE (*)[16][6]’
+ void three_des_crypt(const BYTE in[], BYTE out[], const BYTE key[][16][6]);
+      ^
+des_test.c: In function ‘enc_dec_file’:
+des_test.c:124:33: warning: passing argument 3 of ‘des_crypt’ from incompatible pointer type
+   des_crypt(data_buf, data_enc, schedule);
+                                 ^
+In file included from des_test.c:21:0:
+des.h:32:6: note: expected ‘const BYTE (*)[6]’ but argument is of type ‘BYTE (*)[6]’
+ void des_crypt(const BYTE in[], BYTE out[], const BYTE key[][6]);
+      ^
+des_test.c:127:33: warning: passing argument 3 of ‘des_crypt’ from incompatible pointer type
+   des_crypt(data_enc, data_dec, schedule);
+                                 ^
+In file included from des_test.c:21:0:
+des.h:32:6: note: expected ‘const BYTE (*)[6]’ but argument is of type ‘BYTE (*)[6]’
+ void des_crypt(const BYTE in[], BYTE out[], const BYTE key[][6]);
+      ^
+make: Nothing to be done for 'all'.
+make: Nothing to be done for 'all'.
